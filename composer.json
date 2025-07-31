@@ -1,0 +1,15 @@
+{
+    "name": "tirabyrius/php-test-task",
+    "autoload": {
+        "psr-4": {
+            "Tirabyrius\\PhpTestTask\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "PolinaVoronczova",
+            "email": "tirabyrius@gmail.com"
+        }
+    ],
+    "require": {}
+}

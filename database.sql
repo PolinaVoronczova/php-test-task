@@ -1,5 +1,5 @@
 CREATE TABLE posts (
-    id          bigint PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    id          bigint PRIMARY KEY,
     user_id     bigint,
     title       varchar(255),
     body        text,
@@ -7,10 +7,10 @@ CREATE TABLE posts (
 );
 
 CREATE TABLE comments (
-    id            bigint PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    id            bigint PRIMARY KEY,
     post_id       bigint REFERENCES posts (id),
-    name          varchar(100),
+    name          varchar(255),
     email         varchar(50),
-    body          varchar(255),
+    body          text,
     created_at    timestamp
 );

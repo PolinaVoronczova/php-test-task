@@ -2,7 +2,7 @@
     "name": "tirabyrius/php-test-task",
     "autoload": {
         "psr-4": {
-            "Tirabyrius\\PhpTestTask\\": "src/"
+            "PhpTestTask\\": "src/"
         }
     },
     "authors": [

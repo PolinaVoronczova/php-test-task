@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поиск комментариев</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+</head>
+<body>
+    <h1>Поиск комментариев</h1>
+    
+    <div class="search-form">
+        <form method="GET" action="">
+            <input 
+                type="text" 
+                name="search" 
+                class="search-input" 
+                placeholder="Введите текст для поиска (минимум 3 символа)"
+                value="<?php echo htmlspecialchars($searchTerm ?? ''); ?>"
+                required
+                minlength="3"
+            >
+            <button type="submit" class="search-button">Найти</button>
+        </form>
+        
+        <?php if (!empty($error)) : ?>
+            <div class="error"><?php echo htmlspecialchars($error); ?></div>
+        <?php endif; ?>
+    </div>
+    
+    <?php if (!empty($searchTerm) && empty($error)) : ?>
+        <div class="results">
+            <h2>Результаты поиска для "<?php echo htmlspecialchars($searchTerm); ?>"</h2>
+            
+            <?php if (empty($results)) : ?>
+                <p>Ничего не найдено</p>
+            <?php else: ?>
+                <p>Найдено <?php echo count($results); ?> комментариев</p>
+                
+                <?php foreach ($results as $result): ?>
+                    <div class="result-item">
+                        <h4 class="post-title">
+                            <?php echo htmlspecialchars($result['title']); ?>
+                        </h4>
+                        <div class="comment-body">
+                            <?php echo $result['body']; ?>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
+    <?php endif; ?>
+</body>
+</html>
